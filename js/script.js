@@ -99,7 +99,7 @@ function pressButton(button) {
 }
 
 function setEventHandlers() {
-  
+
 }
 
 function startSeries() {
@@ -111,7 +111,11 @@ function playerAttemptSeries() {
 }
 
 function setStrict(target) {
-
+  if (target.checked) {
+    strict = true;
+  } else {
+    strict = false;
+  }
 }
 
 function reset() {
