@@ -1,4 +1,5 @@
 var strict = false;
+var buttons = ['green','red','yellow','blue']
 var green = document.getElementById('green');
 var red = document.getElementById('red');
 var yellow = document.getElementById('yellow');
@@ -87,14 +88,6 @@ function incrementCount() {
   }
 }
 
-function chooseNextButton() {
-  
-}
-
-function addToSeries() {
-
-}
-
 function pressButton(button) {
   playAudio(button);
   flashColor(button);
@@ -105,6 +98,14 @@ function setEventHandlers() {
 }
 
 function startSeries() {
+
+}
+
+function chooseNextButton() {
+  
+}
+
+function addToSeries() {
 
 }
 
@@ -121,14 +122,13 @@ function setStrict(target) {
 }
 
 function reset() {
-  var strict = false;
-  var greenAudio;
-  var redAudio;
-  var yellowAudio;
-  var blueAudio;
-  var count = '--';
-  var series = [];
-  var playerAttempt = series;
+  green = document.getElementById('green');
+  red = document.getElementById('red');
+  yellow = document.getElementById('yellow');
+  blue = document.getElementById('blue');
+  count = '--';
+  series = [];
+  playerAttempt = series;
   document.getElementById('count').textContent = count;
 }
 
