@@ -149,11 +149,11 @@ function startOrStop(target) {
 
 function ready() {
   var startStop = document.getElementById('startStop');
-  startStop[i].addEventListener("click", function(event) {
+  startStop.addEventListener("click", function(event) {
     startOrStop(event.target);
   });
   var strictToggle = document.getElementById('strict');
-  strictToggle[i].addEventListener("click", function(event) {
+  strictToggle.addEventListener("click", function(event) {
     setStrict(event.target);
   });
 }
