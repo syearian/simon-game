@@ -3,7 +3,7 @@ var greenAudio;
 var redAudio;
 var yellowAudio;
 var blueAudio;
-var count = document.getElementById('count').textContent;
+var count = '--';
 var series = [];
 var playerAttempt = series;
 
@@ -53,7 +53,14 @@ function setStrict(target) {
 }
 
 function reset() {
-
+  var strict = false;
+  var greenAudio;
+  var redAudio;
+  var yellowAudio;
+  var blueAudio;
+  var count = '--';
+  var series = [];
+  var playerAttempt = series;
 }
 
 function win() {
