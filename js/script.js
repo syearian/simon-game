@@ -28,6 +28,10 @@ function incrementCount() {
   }
 }
 
+function chooseNextButton() {
+  
+}
+
 function addToSeries() {
 
 }
