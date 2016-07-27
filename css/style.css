@@ -157,6 +157,10 @@ label {
   font-size: 2em;
 }
 
+#controls h2 {
+  font-family: Oswald, sans-serif;
+}
+
 #controls h2 span {
   font-size: .4em;
   vertical-align: top;
