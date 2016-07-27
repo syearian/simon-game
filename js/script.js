@@ -48,7 +48,7 @@ function playerAttemptSeries() {
 
 }
 
-function setStrict() {
+function setStrict(target) {
 
 }
 
@@ -60,7 +60,7 @@ function win() {
 
 }
 
-function startOrStop() {
+function startOrStop(target) {
 
 }
 
