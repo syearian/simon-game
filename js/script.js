@@ -7,6 +7,12 @@ var blue = document.getElementById('blue');
 var count = '--';
 var series = [];
 var playerAttempt = series;
+var flashColors = {
+  'green': '#32b232',
+  'red': '#E55451',
+  'yellow': '#FFDB58',
+  'blue': '#3232ff'
+}
 
 function playAudio(button) {
   var audio = button.firstElementChild;
@@ -14,36 +20,36 @@ function playAudio(button) {
 }
 
 // From https://css-tricks.com/snippets/javascript/lighten-darken-color/
-function LightenDarkenColor(col, amt) {
+// function LightenDarkenColor(col, amt) {
   
-    var usePound = false;
+//     var usePound = false;
   
-    if (col[0] == "#") {
-        col = col.slice(1);
-        usePound = true;
-    }
+//     if (col[0] == "#") {
+//         col = col.slice(1);
+//         usePound = true;
+//     }
  
-    var num = parseInt(col,16);
+//     var num = parseInt(col,16);
  
-    var r = (num >> 16) + amt;
+//     var r = (num >> 16) + amt;
  
-    if (r > 255) r = 255;
-    else if  (r < 0) r = 0;
+//     if (r > 255) r = 255;
+//     else if  (r < 0) r = 0;
  
-    var b = ((num >> 8) & 0x00FF) + amt;
+//     var b = ((num >> 8) & 0x00FF) + amt;
  
-    if (b > 255) b = 255;
-    else if  (b < 0) b = 0;
+//     if (b > 255) b = 255;
+//     else if  (b < 0) b = 0;
  
-    var g = (num & 0x0000FF) + amt;
+//     var g = (num & 0x0000FF) + amt;
  
-    if (g > 255) g = 255;
-    else if (g < 0) g = 0;
+//     if (g > 255) g = 255;
+//     else if (g < 0) g = 0;
  
-    return (usePound?"#":"") + String("000000" + (g | (b << 8) | (r << 16)).toString(16)).slice(-6);
+//     return (usePound?"#":"") + String("000000" + (g | (b << 8) | (r << 16)).toString(16)).slice(-6);
 
   
-}
+// }
 
 function getHexColor(color) {
   var hexColor;
@@ -70,9 +76,12 @@ function changeBackground(button, color) {
 
 function flashColor(button) {
   var color = getHexColor(button.id);
-  var flashColor = LightenDarkenColor(color, 10);
+  // console.log(color);
+  var flashColor = flashColors[button.id];
+  console.log(flashColor);
   changeBackground(button, flashColor);
-  setTimeout(changeBackground(button, color), 500);
+  console.log(button.style.background);
+  var timeout = window.setInterval(changeBackground, 500, button, color);
 }
 
 function incrementCount() {
@@ -94,10 +103,22 @@ function pressButton(button) {
 }
 
 function setEventHandlers() {
-
+  green.addEventListener("click", function(event) {
+    pressButton(green);
+  });
+  red.addEventListener("click", function(event) {
+    pressButton(red);
+  });
+  yellow.addEventListener("click", function(event) {
+    pressButton(yellow);
+  });
+  blue.addEventListener("click", function(event) {
+    pressButton(blue);
+  });
 }
 
 function startSeries() {
+  setEventHandlers();
 
 }
 
