@@ -3,6 +3,7 @@ var greenAudio;
 var redAudio;
 var yellowAudio;
 var blueAudio;
+var count = document.getElementById('count').textContent;
 var series = [];
 var playerAttempt = series;
 
@@ -14,12 +15,25 @@ function flashColor() {
 
 }
 
+function incrementCount() {
+  if (count === "--") {
+    count = 1;
+    document.getElementById('count').textContent = '0' + count.toString();
+  } else if (count === 20) {
+    win();
+  }
+  else {
+    count = ++count;
+    document.getElementById('count').textContent = '0' + count.toString();
+  }
+}
+
 function addToSeries() {
 
 }
 
 function pressButton() {
-  
+
 }
 
 function startSeries() {
@@ -35,6 +49,10 @@ function setStrict() {
 }
 
 function reset() {
+
+}
+
+function win() {
 
 }
 
