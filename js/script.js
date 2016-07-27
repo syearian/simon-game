@@ -98,6 +98,10 @@ function pressButton(button) {
   flashColor(button);
 }
 
+function setEventHandlers() {
+  
+}
+
 function startSeries() {
 
 }
