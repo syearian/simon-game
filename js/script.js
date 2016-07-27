@@ -130,14 +130,18 @@ function reset() {
 }
 
 function win() {
-
+  pressButton(green);
+  pressButton(red);
+  pressButton(yellow);
+  pressButton(blue);
+  reset();
 }
 
 function startOrStop(target) {
   if (target.checked) {
     startSeries();
   } else {
-    reset();
+    setTimeout(reset(), 500);
   }
 }
 
