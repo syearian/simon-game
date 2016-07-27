@@ -134,7 +134,11 @@ function win() {
 }
 
 function startOrStop(target) {
-
+  if (target.checked) {
+    startSeries();
+  } else {
+    reset();
+  }
 }
 
 function ready() {
