@@ -81,7 +81,7 @@ function flashColor(button) {
   console.log(flashColor);
   changeBackground(button, flashColor);
   console.log(button.style.background);
-  var timeout = window.setInterval(changeBackground, 500, button, color);
+  var timeout = window.setInterval(changeBackground, 300, button, color);
 }
 
 function incrementCount() {
