@@ -180,11 +180,11 @@ label {
 
   #controls {
     left: 50%;
-    margin-left: -175px;
+    margin-left: -151px;
     top: 50%;
-    margin-top: -175px;
-    width: 350px;
-    height: 350px;
+    margin-top: -151px;
+    width: 302px;
+    height: 302px;
   }
 
   input.toggle-round + label {
@@ -223,16 +223,16 @@ label {
     margin-left: 40px;
   }
 
-label {
-  font-size: 1em;
-}
+  label {
+    font-size: 1em;
+  }
 
   #controls h2, #controls p {
     font-size: 3em;
   }
 
   #controlButtons {
-    margin: 40px 0;
+    margin: 30px 0;
   }
   
 }
