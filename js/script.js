@@ -63,13 +63,15 @@ function getHexColor(color) {
   return hexColor;
 }
 
+function changeBackground(button, color) {
+  button.style.background = color;
+}
+
 function flashColor(button) {
   var color = getHexColor(button.id);
   var flashColor = LightenDarkenColor(color, 10);
-  button.style.background = flashColor;
-  setTimeout(function(button, color) {
-    button.style.background = color;
-  }, 500);
+  changeBackground(button, flashColor);
+  setTimeout(changeBackground(button, color), 500);
 }
 
 function incrementCount() {
