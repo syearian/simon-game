@@ -129,6 +129,7 @@ function reset() {
   var count = '--';
   var series = [];
   var playerAttempt = series;
+  document.getElementById('count').textContent = count;
 }
 
 function win() {
