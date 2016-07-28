@@ -6,7 +6,7 @@ var yellow = document.getElementById('yellow');
 var blue = document.getElementById('blue');
 var count = '--';
 var series = [];
-var playerAttempt = series;
+var playerAttemptSeries = series;
 var flashColors = {
   'green': '#32b232',
   'red': '#E55451',
@@ -85,20 +85,26 @@ function setEventHandlers() {
   });
 }
 
-function startSeries() {
-  setEventHandlers();
-
-}
-
-function chooseNextButton() {
+function getCorrectElement() {
   
 }
 
-function addToSeries() {
-
+function startSeries() {
+  for (var i= 0; i < series.length; i++) {
+    pressButton(series[i]);
+  }
 }
 
-function playerAttemptSeries() {
+function chooseNextButton() {
+  return buttons[Math.floor(Math.random() * buttons.length)];
+}
+
+function addToSeries() {
+  series.push(chooseNextButton());
+  playerAttemptSeries = series;
+}
+
+function playerAttempt() {
 
 }
 
@@ -131,9 +137,10 @@ function win() {
 
 function startOrStop(target) {
   if (target.checked) {
+    setEventHandlers();
     startSeries();
   } else {
-    setTimeout(reset(), 500);
+    reset();
   }
 }
 
