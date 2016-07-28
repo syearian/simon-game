@@ -4,7 +4,7 @@ var green = document.getElementById('green');
 var red = document.getElementById('red');
 var yellow = document.getElementById('yellow');
 var blue = document.getElementById('blue');
-var count = '--';
+var count = 0;
 var series = [];
 var playerAttemptSeries = series;
 var flashColors = {
@@ -121,6 +121,9 @@ function chooseNextButton() {
 function addToSeries() {
   series.push(chooseNextButton());
   playerAttemptSeries = series;
+  count++;
+  document.getElementById('count').textContent = '0' + count.toString();
+  startSeries();
 }
 
 function playerAttempt() {
@@ -140,10 +143,10 @@ function reset() {
   red = document.getElementById('red');
   yellow = document.getElementById('yellow');
   blue = document.getElementById('blue');
-  count = '--';
+  count = 0;
   series = [];
   playerAttempt = series;
-  document.getElementById('count').textContent = count;
+  document.getElementById('count').textContent = '--';
 }
 
 function win() {
@@ -157,7 +160,7 @@ function win() {
 function startOrStop(target) {
   if (target.checked) {
     setEventHandlers();
-    startSeries();
+    addToSeries();
   } else {
     reset();
   }
