@@ -1,5 +1,5 @@
 var strict = false;
-var buttons = ['green','red','yellow','blue']
+var buttons = ['red','green','yellow','blue']
 var green = document.getElementById('green');
 var red = document.getElementById('red');
 var yellow = document.getElementById('yellow');
@@ -53,9 +53,7 @@ function incrementCount() {
   if (count === "--") {
     count = 1;
     document.getElementById('count').textContent = '0' + count.toString();
-  } else if (count === 20) {
-    win();
-  }
+  } 
   else {
     count = ++count;
     document.getElementById('count').textContent = '0' + count.toString();
@@ -131,15 +129,17 @@ function blueEvent() {
 }
 
 function playerAttempt(button) {
-  console.log(button);
   if (button.id === playerAttemptSeries[0]) {
     playerAttemptSeries.shift();
     if (playerAttemptSeries.length < 1) {
-      var addTimeout = window.setTimeout(addToSeries, 300);
+      if (count === 5) {
+        var winTimeout = window.setTimeout(win, 400);
+      } else {        
+        var addTimeout = window.setTimeout(addToSeries, 300);
+      }
     }
   } else if (strict === true) {
     reset();
-    setEventHandlers();
     var strictTimeout = window.setTimeout(addToSeries, 500);
   } else {
     var replayTimeout = window.setTimeout(startSeries, 300);
@@ -169,23 +169,30 @@ function setStrict(target) {
 }
 
 function reset() {
-  green = document.getElementById('green');
-  red = document.getElementById('red');
-  yellow = document.getElementById('yellow');
-  blue = document.getElementById('blue');
   count = 0;
   series = [];
   playerAttemptSeries = series;
   document.getElementById('count').textContent = '--';
+}
+
+function stop() {
+  reset();
   removeEventHandlers();
 }
 
 function win() {
-  pressButton(green);
-  pressButton(red);
-  pressButton(yellow);
-  pressButton(blue);
-  reset();
+  var i = 0;
+  var button;
+  var winInterval = window.setInterval(function() {
+    button = getCorrectButton(buttons[i]);
+    pressButton(button, 180);
+    i++
+    if (i >= buttons.length) {
+      clearInterval(winInterval);
+    }
+  }, 180);
+  var resetTimeout = window.setTimeout(reset, 1000);
+  var restartTimeout = window.setTimeout(addToSeries, 2000);
 }
 
 function startOrStop(target) {
@@ -193,7 +200,7 @@ function startOrStop(target) {
     setEventHandlers();
     addToSeries();
   } else {
-    reset();
+    stop();
   }
 }
 
