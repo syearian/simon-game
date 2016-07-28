@@ -4,7 +4,7 @@ var green = document.getElementById('green');
 var red = document.getElementById('red');
 var yellow = document.getElementById('yellow');
 var blue = document.getElementById('blue');
-var count = 0;
+var count = '--';
 var series = [];
 var playerAttemptSeries = series;
 var flashColors = {
@@ -106,9 +106,28 @@ function chooseNextButton() {
 function addToSeries() {
   series.push(chooseNextButton());
   playerAttemptSeries = series;
-  count++;
-  document.getElementById('count').textContent = '0' + count.toString();
+  incrementCount();
   startSeries();
+}
+
+function greenEvent() {
+  pressButton(green);
+  playerAttempt(green);
+}
+
+function redEvent() {
+  pressButton(red);
+  playerAttempt(red);
+}
+
+function yellowEvent() {
+  pressButton(yellow);
+  playerAttempt(yellow);
+}
+
+function blueEvent() {
+  pressButton(blue);
+  playerAttempt(blue);
 }
 
 function playerAttempt(button) {
@@ -116,22 +135,17 @@ function playerAttempt(button) {
 }
 
 function setEventHandlers() {
-  green.addEventListener("click", function(event) {
-    pressButton(green);
-    playerAttempt(green);
-  });
-  red.addEventListener("click", function(event) {
-    pressButton(red);
-    playerAttempt(red);
-  });
-  yellow.addEventListener("click", function(event) {
-    pressButton(yellow);
-    playerAttempt(yellow);
-  });
-  blue.addEventListener("click", function(event) {
-    pressButton(blue);
-    playerAttempt(blue);
-  });
+  green.addEventListener("click", greenEvent);
+  red.addEventListener("click", redEvent);
+  yellow.addEventListener("click", yellowEvent);
+  blue.addEventListener("click", blueEvent);
+}
+
+function removeEventHandlers() {
+  green.removeEventListener("click", greenEvent);
+  red.removeEventListener("click", redEvent);
+  yellow.removeEventListener("click", yellowEvent);
+  blue.removeEventListener("click", blueEvent);
 }
 
 function setStrict(target) {
@@ -149,8 +163,9 @@ function reset() {
   blue = document.getElementById('blue');
   count = 0;
   series = [];
-  playerAttempt = series;
+  playerAttemptSeries = series;
   document.getElementById('count').textContent = '--';
+  removeEventHandlers();
 }
 
 function win() {
