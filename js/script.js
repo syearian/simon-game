@@ -142,6 +142,7 @@ function playerAttempt(button) {
     reset();
     var strictTimeout = window.setTimeout(addToSeries, 500);
   } else {
+    playerAttemptSeries = series.slice();
     var replayTimeout = window.setTimeout(startSeries, 300);
   }
 }
