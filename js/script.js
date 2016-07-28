@@ -139,11 +139,17 @@ function playerAttempt(button) {
       }
     }
   } else if (strict === true) {
+    document.getElementById('wrong').play();
+    var correct = getCorrectButton(playerAttemptSeries[0]);
+    flashColor(correct, 200); 
     reset();
-    var strictTimeout = window.setTimeout(addToSeries, 500);
+    var strictTimeout = window.setTimeout(addToSeries, 800);
   } else {
+    document.getElementById('wrong').play();
+    var correct = getCorrectButton(playerAttemptSeries[0]);
+    flashColor(correct, 200);
     playerAttemptSeries = series.slice();
-    var replayTimeout = window.setTimeout(startSeries, 300);
+    var replayTimeout = window.setTimeout(startSeries, 600);
   }
 }
 
