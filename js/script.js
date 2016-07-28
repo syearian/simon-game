@@ -39,7 +39,9 @@ function getHexColor(color) {
 }
 
 function changeBackground(button, color) {
+  console.log(color);
   button.style.background = color;
+  console.log(color);
 }
 
 function flashColor(button) {
@@ -111,22 +113,26 @@ function addToSeries() {
   startSeries();
 }
 
-function playerAttempt() {
-
+function playerAttempt(button) {
+  console.log(button);
 }
 
 function setEventHandlers() {
   green.addEventListener("click", function(event) {
     pressButton(green);
+    playerAttempt(green);
   });
   red.addEventListener("click", function(event) {
     pressButton(red);
+    playerAttempt(red);
   });
   yellow.addEventListener("click", function(event) {
     pressButton(yellow);
+    playerAttempt(yellow);
   });
   blue.addEventListener("click", function(event) {
     pressButton(blue);
+    playerAttempt(blue);
   });
 }
 
