@@ -67,21 +67,6 @@ function pressButton(button) {
   flashColor(button);
 }
 
-function setEventHandlers() {
-  green.addEventListener("click", function(event) {
-    pressButton(green);
-  });
-  red.addEventListener("click", function(event) {
-    pressButton(red);
-  });
-  yellow.addEventListener("click", function(event) {
-    pressButton(yellow);
-  });
-  blue.addEventListener("click", function(event) {
-    pressButton(blue);
-  });
-}
-
 function getCorrectButton(elem) {
   var correct;
   switch (elem) {
@@ -128,6 +113,21 @@ function addToSeries() {
 
 function playerAttempt() {
 
+}
+
+function setEventHandlers() {
+  green.addEventListener("click", function(event) {
+    pressButton(green);
+  });
+  red.addEventListener("click", function(event) {
+    pressButton(red);
+  });
+  yellow.addEventListener("click", function(event) {
+    pressButton(yellow);
+  });
+  blue.addEventListener("click", function(event) {
+    pressButton(blue);
+  });
 }
 
 function setStrict(target) {
