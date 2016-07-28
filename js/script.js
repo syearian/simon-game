@@ -42,11 +42,11 @@ function changeBackground(button, color) {
   button.style.background = color;
 }
 
-function flashColor(button) {
+function flashColor(button, timeDelay) {
   var color = getHexColor(button.id);
   var flashColor = flashColors[button.id];
   changeBackground(button, flashColor);
-  var flashTimeout = window.setTimeout(changeBackground, 400, button, color);
+  var flashTimeout = window.setTimeout(changeBackground, timeDelay, button, color);
 }
 
 function incrementCount() {
@@ -62,9 +62,9 @@ function incrementCount() {
   }
 }
 
-function pressButton(button) {
+function pressButton(button, timeDelay) {
   playAudio(button);
-  flashColor(button);
+  flashColor(button, timeDelay);
 }
 
 function getCorrectButton(elem) {
@@ -91,12 +91,12 @@ function startSeries() {
   var button;
   var seriesInterval = window.setInterval(function() {
     button = getCorrectButton(series[i]);
-    pressButton(button);
+    pressButton(button, 500);
     i++
     if (i >= series.length) {
       clearInterval(seriesInterval);
     }
-  }, 600);
+  }, 700);
 }
 
 function chooseNextButton() {
@@ -111,22 +111,22 @@ function addToSeries() {
 }
 
 function greenEvent() {
-  pressButton(green);
+  pressButton(green, 200);
   playerAttempt(green);
 }
 
 function redEvent() {
-  pressButton(red);
+  pressButton(red, 200);
   playerAttempt(red);
 }
 
 function yellowEvent() {
-  pressButton(yellow);
+  pressButton(yellow, 200);
   playerAttempt(yellow);
 }
 
 function blueEvent() {
-  pressButton(blue);
+  pressButton(blue, 200);
   playerAttempt(blue);
 }
 
