@@ -39,16 +39,14 @@ function getHexColor(color) {
 }
 
 function changeBackground(button, color) {
-  console.log(color);
   button.style.background = color;
-  console.log(color);
 }
 
 function flashColor(button) {
   var color = getHexColor(button.id);
   var flashColor = flashColors[button.id];
   changeBackground(button, flashColor);
-  var timeout = window.setInterval(changeBackground, 400, button, color);
+  var timeout = window.setTimeout(changeBackground, 400, button, color);
 }
 
 function incrementCount() {
