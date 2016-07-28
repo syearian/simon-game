@@ -132,7 +132,7 @@ function playerAttempt(button) {
   if (button.id === playerAttemptSeries[0]) {
     playerAttemptSeries.shift();
     if (playerAttemptSeries.length < 1) {
-      if (count === 5) {
+      if (count === 20) {
         var winTimeout = window.setTimeout(win, 400);
       } else {        
         var addTimeout = window.setTimeout(addToSeries, 300);
