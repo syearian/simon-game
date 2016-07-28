@@ -44,11 +44,8 @@ function changeBackground(button, color) {
 
 function flashColor(button) {
   var color = getHexColor(button.id);
-  // console.log(color);
   var flashColor = flashColors[button.id];
-  console.log(flashColor);
   changeBackground(button, flashColor);
-  console.log(button.style.background);
   var timeout = window.setInterval(changeBackground, 300, button, color);
 }
 
@@ -85,13 +82,29 @@ function setEventHandlers() {
   });
 }
 
-function getCorrectElement() {
-  
+function getCorrectButton(elem) {
+  var correct;
+  switch (elem) {
+    case 'green':
+      correct = green;
+      break;
+    case 'red':
+      correct = red;
+      break;
+    case 'yellow':
+      correct = yellow;
+      break;
+    case 'blue':
+      correct = blue;
+      break;
+  }
+  return correct;
 }
 
 function startSeries() {
   for (var i= 0; i < series.length; i++) {
-    pressButton(series[i]);
+    var button = getCorrectButton(series[i]);
+    pressButton(button);
   }
 }
 
