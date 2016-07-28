@@ -6,7 +6,7 @@ var yellow = document.getElementById('yellow');
 var blue = document.getElementById('blue');
 var count = '--';
 var series = [];
-var playerAttemptSeries = series;
+var playerAttemptSeries = [];
 var flashColors = {
   'green': '#32b232',
   'red': '#E55451',
@@ -46,7 +46,7 @@ function flashColor(button) {
   var color = getHexColor(button.id);
   var flashColor = flashColors[button.id];
   changeBackground(button, flashColor);
-  var timeout = window.setTimeout(changeBackground, 400, button, color);
+  var flashTimeout = window.setTimeout(changeBackground, 400, button, color);
 }
 
 function incrementCount() {
@@ -105,7 +105,7 @@ function chooseNextButton() {
 
 function addToSeries() {
   series.push(chooseNextButton());
-  playerAttemptSeries = series;
+  playerAttemptSeries = series.slice();
   incrementCount();
   startSeries();
 }
@@ -132,6 +132,12 @@ function blueEvent() {
 
 function playerAttempt(button) {
   console.log(button);
+  if (button.id === playerAttemptSeries[0]) {
+    playerAttemptSeries.shift();
+    if (playerAttemptSeries.length < 1) {
+      var addTimeout = window.setTimeout(addToSeries, 200);
+    }
+  }
 }
 
 function setEventHandlers() {
