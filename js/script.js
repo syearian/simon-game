@@ -46,7 +46,7 @@ function flashColor(button) {
   var color = getHexColor(button.id);
   var flashColor = flashColors[button.id];
   changeBackground(button, flashColor);
-  var timeout = window.setInterval(changeBackground, 300, button, color);
+  var timeout = window.setInterval(changeBackground, 400, button, color);
 }
 
 function incrementCount() {
@@ -102,10 +102,16 @@ function getCorrectButton(elem) {
 }
 
 function startSeries() {
-  for (var i= 0; i < series.length; i++) {
-    var button = getCorrectButton(series[i]);
+  var i = 0;
+  var button;
+  var seriesInterval = window.setInterval(function() {
+    button = getCorrectButton(series[i]);
     pressButton(button);
-  }
+    i++
+    if (i >= series.length) {
+      clearInterval(seriesInterval);
+    }
+  }, 600);
 }
 
 function chooseNextButton() {
