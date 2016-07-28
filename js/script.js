@@ -135,8 +135,14 @@ function playerAttempt(button) {
   if (button.id === playerAttemptSeries[0]) {
     playerAttemptSeries.shift();
     if (playerAttemptSeries.length < 1) {
-      var addTimeout = window.setTimeout(addToSeries, 200);
+      var addTimeout = window.setTimeout(addToSeries, 300);
     }
+  } else if (strict === true) {
+    reset();
+    setEventHandlers();
+    var strictTimeout = window.setTimeout(addToSeries, 500);
+  } else {
+    var replayTimeout = window.setTimeout(startSeries, 300);
   }
 }
 
